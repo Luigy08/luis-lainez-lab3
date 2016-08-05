@@ -3,6 +3,7 @@ using namespace std;
 void imprimir(char**,int);
 int mover(char**,char,int);
 int main(int argc,char const *argv[]){
+	char** matriz;
 	int op=0;
 	while(op!=3){
 		cout<<"1.-Ejercicio #1"<<endl<<"2.-Ejercicio #2"<<endl<<"...";
@@ -18,7 +19,7 @@ int main(int argc,char const *argv[]){
 						cout<<"El tamaño debe ser mayor a 9"<<endl;
 					}
 				}while(size<4);
-				char** matriz=new char*[size];
+				matriz=new char*[size];
 				for(int i=0;i<size;i++){
 					matriz[i]=new char[size];
 				}
@@ -49,11 +50,11 @@ int main(int argc,char const *argv[]){
 				bool end=true;
 				int puntosF=0;
 				while(end){
-					
+					int temPuntos=0;
 					char mov;
 					cout<<"Ingrese movimiento (w,a,s,d): ";
 					cin>>mov;
-					int temPuntos=mover(matriz,mov,size);
+					temPuntos=mover(matriz,mov,size);
 					if(temPuntos==5){
 						puntosF-=temPuntos;
 					}else{
@@ -72,6 +73,19 @@ int main(int argc,char const *argv[]){
 				delete []matriz;
 				break;
 			}
+			case 2:{
+				cout<<"\tCalculadora Binaria"<<endl;
+				int op2=0;
+				while(op2!=4){
+					cout<<"1.-Decimal a binario\n"<<"2.-Binario a decimal\n"<<"3.-Sumar binarios\n...\n";
+					cin>>op2;
+					switch(op2){
+						case 1:{
+							
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -85,7 +99,7 @@ void imprimir(char** matriz,int size){
 }
 int mover(char** matriz,char movimiento,int size){
 	int filaAc=0,columnaAc=0;
-	int puntos=0;
+	
 	for(int i=0;i<size;i++){
 		for(int j=0;j<size;j++){
 			if(matriz[i][j]=='2'){
@@ -98,40 +112,45 @@ int mover(char** matriz,char movimiento,int size){
 	cout<<matriz[filaAc][columnaAc]<<endl;
 	if(movimiento=='w'){
 		if(matriz[filaAc-1][columnaAc]!='0'){
-			matriz[filaAc-1][columnaAc]==matriz[filaAc][columnaAc];
+			matriz[filaAc-1][columnaAc]=matriz[filaAc][columnaAc];
 			if(matriz[filaAc-1][columnaAc]!='-'){
-				puntos=matriz[filaAc-1][columnaAc];
+				matriz[filaAc][columnaAc]='-';
+				return matriz[filaAc-1][columnaAc];
 			}
-			matriz[filaAc][columnaAc]=='-';
+			
 		}
 	}
 	if(movimiento=='a'){
 		if(matriz[filaAc][columnaAc-1]!='0'){
-			matriz[filaAc][columnaAc-1]==matriz[filaAc][columnaAc-1];
+			matriz[filaAc][columnaAc-1]=matriz[filaAc][columnaAc];
 			if(matriz[filaAc][columnaAc-1]!='-'){
-                                puntos=matriz[filaAc][columnaAc-1];
+                        	matriz[filaAc][columnaAc]='-';
+				return matriz[filaAc][columnaAc-1];
                         }
-			matriz[filaAc][columnaAc]=='-';
+		
 		}
 	}
 	if(movimiento=='s'){
 		if(matriz[filaAc+1][columnaAc]!='0'){
-			matriz[filaAc+1][columnaAc]==matriz[filaAc][columnaAc];
+			matriz[filaAc+1][columnaAc]=matriz[filaAc][columnaAc];
 			if(matriz[filaAc+1][columnaAc]!='-'){
-                                puntos=matriz[filaAc+1][columnaAc];
+				matriz[filaAc][columnaAc]='-';
+                                return matriz[filaAc+1][columnaAc];
                         }
-			matriz[filaAc][columnaAc]=='-';
+			
 		}
 	}
 	if(movimiento=='d'){
 		if(matriz[filaAc][columnaAc+1]!='0'){
-			matriz[filaAc][columnaAc+1]==matriz[filaAc][columnaAc];
+			cout<<"Entro 1";
+			matriz[filaAc][columnaAc+1]=matriz[filaAc][columnaAc];
 			if(matriz[filaAc][columnaAc+1]!='-'){
-                                puntos=matriz[filaAc][columnaAc+1];
+                        	matriz[filaAc][columnaAc]='-';
+			        return matriz[filaAc][columnaAc+1];
                         }
-			matriz[filaAc][columnaAc]=='-';
+		
 		}
 	}
-	cout<<endl<<puntos<<endl;
-	return puntos;
+	
+	return 0;
 }
