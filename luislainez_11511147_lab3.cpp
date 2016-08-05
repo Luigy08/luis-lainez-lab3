@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 void imprimir(char**,int);
+int decimalBinario(int);
+int casteo(int);
 int mover(char**,char,int);
 int main(int argc,char const *argv[]){
 	char** matriz;
@@ -18,7 +20,7 @@ int main(int argc,char const *argv[]){
 					if(size<10){
 						cout<<"El tamaño debe ser mayor a 9"<<endl;
 					}
-				}while(size<4);
+				}while(size<10);
 				matriz=new char*[size];
 				for(int i=0;i<size;i++){
 					matriz[i]=new char[size];
@@ -42,7 +44,6 @@ int main(int argc,char const *argv[]){
 					for(int j=0;j<size;j++){
 						matriz[i][j]=fila[j];
 					}
-				//	matriz[i]=fila;
 					imprimir(matriz,size);
 				}
 				imprimir(matriz,size);
@@ -81,13 +82,37 @@ int main(int argc,char const *argv[]){
 					cin>>op2;
 					switch(op2){
 						case 1:{
-							
+							cout<<endl<<"\tDecimal a Binario"<<endl;
+							int numero;
+							cout<<"Numero: ";
+							cin>>numero;
+							decimalBinario(numero);
+							break;					
 						}
 					}
 				}
 			}
 		}
 	}
+}
+int decimalBinario(int numero){
+	int div=numero,tem;
+	int con=0;
+	int acumulado[con];
+	while(div>2){
+		tem=div%2;
+		if(tem==1){
+			acumulado[con]=1;
+		}else{
+			acumulado[con]=0;
+		}
+		div=div/2;
+		con++;
+	}
+	for(int i=con;i>0;i--){
+		cout<<acumulado[i];
+	}
+	
 }
 void imprimir(char** matriz,int size){
 	for(int i=0;i<size;i++){
@@ -115,7 +140,9 @@ int mover(char** matriz,char movimiento,int size){
 			matriz[filaAc-1][columnaAc]=matriz[filaAc][columnaAc];
 			if(matriz[filaAc-1][columnaAc]!='-'){
 				matriz[filaAc][columnaAc]='-';
-				return matriz[filaAc-1][columnaAc];
+				int resta=0;
+				
+				return casteo(matriz[filaAc-1][columnaAc]);
 			}
 			
 		}
@@ -125,7 +152,7 @@ int mover(char** matriz,char movimiento,int size){
 			matriz[filaAc][columnaAc-1]=matriz[filaAc][columnaAc];
 			if(matriz[filaAc][columnaAc-1]!='-'){
                         	matriz[filaAc][columnaAc]='-';
-				return matriz[filaAc][columnaAc-1];
+				return casteo(matriz[filaAc][columnaAc-1]);
                         }
 		
 		}
@@ -135,7 +162,7 @@ int mover(char** matriz,char movimiento,int size){
 			matriz[filaAc+1][columnaAc]=matriz[filaAc][columnaAc];
 			if(matriz[filaAc+1][columnaAc]!='-'){
 				matriz[filaAc][columnaAc]='-';
-                                return matriz[filaAc+1][columnaAc];
+                                return casteo(matriz[filaAc+1][columnaAc]);
                         }
 			
 		}
@@ -146,11 +173,22 @@ int mover(char** matriz,char movimiento,int size){
 			matriz[filaAc][columnaAc+1]=matriz[filaAc][columnaAc];
 			if(matriz[filaAc][columnaAc+1]!='-'){
                         	matriz[filaAc][columnaAc]='-';
-			        return matriz[filaAc][columnaAc+1];
+			        return casteo(matriz[filaAc][columnaAc+1]);
                         }
 		
 		}
 	}
 	
 	return 0;
+}int casteo(int numero){
+	if(numero==49){
+		return numero-48;
+	}
+	if(numero==51){
+		return numero-48;
+	}
+	if(numero==53){
+		return numero-48;
+	}
+
 }
