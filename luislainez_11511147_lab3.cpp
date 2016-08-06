@@ -110,7 +110,7 @@ int main(int argc,char const *argv[]){
 							cin>>numero1;
 							cout<<"Segundo numero: ";
 							cin>>numero2;
-							
+							cout<<"No da";
 							
 						}
 					}
@@ -119,7 +119,7 @@ int main(int argc,char const *argv[]){
 		}
 	}
 }
-void suma(int numero1,int numero2){
+/*void suma(int numero1,int numero2){
 	int b1[8]=binario1;
 	int b2[8]=binario2;
 	int tem=0;
@@ -146,7 +146,7 @@ void suma(int numero1,int numero2){
 	for(int i=0;i<8;i++){
 		cout<<salida[i];
 	}
-}
+}*/
 int binarioDecimal(int numero){
 	int mul=1;
 	int salida=0;
