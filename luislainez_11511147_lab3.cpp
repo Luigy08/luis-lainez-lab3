@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 void imprimir(char**,int);
+void suma(int,int);
 int binarioDecimal(int);
 int decimalBinario(int);
 int casteo(int);
@@ -118,15 +119,32 @@ int main(int argc,char const *argv[]){
 		}
 	}
 }
-int suma(int binario1,int binario2){
+void suma(int numero1,int numero2){
 	int b1[8]=binario1;
 	int b2[8]=binario2;
 	int tem=0;
-	int salida=0;
+	int salida[8];
 	for(int i=8;i>=0;i--){
-		if(b1[i]+b2[i]+tem=0){
-				
+		if(b1[i]+b2[i]+tem==0){
+			salida[i]=0;
+			tem=0;		
 		}
+		if(b1[i]+b2[i]+c==1){
+			salida[i]=1;
+			tem=0;
+		}
+		if(b1[i]+b2[i]+c==2){
+			salida[i]=0;
+			tem=1;
+		}
+		if(b1[i]+b2[i]+c==3){
+			salida[i]=1;
+			tem=1;
+		}
+	}
+	cout<<endl<<tem
+	for(int i=0;i<8;i++){
+		cout<<salida[i];
 	}
 }
 int binarioDecimal(int numero){
